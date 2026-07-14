@@ -1,0 +1,684 @@
+﻿<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ظ„ظˆط­ط© ط§ظ„ط¥ط¯ط§ط±ط© - ط§ظ„ظ…طھط¬ط±</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2>ظ„ظˆط­ط© ط§ظ„ط¥ط¯ط§ط±ط©</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li class="active" data-tab="orders">ط§ظ„ط·ظ„ط¨ط§طھ</li>
+          <li data-tab="accepted-orders">ط§ظ„ط·ظ„ط¨ط§طھ ط§ظ„ظ…ظ‚ط¨ظˆظ„ط©</li>
+          <li data-tab="products">ط§ظ„ظ…ظ†طھط¬ط§طھ</li>
+          <li data-tab="categories">ط§ظ„ظپط¦ط§طھ</li>
+          <li data-tab="banners">ط§ظ„ط¨ظ†ط±ط§طھ</li>
+          <li data-tab="settings">ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھظˆطµظٹظ„</li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-header">
+          <button id="toggle-sidebar" class="toggle-btn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <h3>ط§ظ„ط·ظ„ط¨ط§طھ ط§ظ„ظˆط§ط±ط¯ط©</h3>
+        </header>
+
+        <div class="tab-content active" id="orders-tab">
+          <div class="orders-grid" id="orders-container">
+            <p>ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط·ظ„ط¨ط§طھ...</p>
+          </div>
+        </div>
+
+        <div class="tab-content" id="accepted-orders-tab">
+          <div class="orders-grid" id="accepted-orders-container">
+            <p>ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط·ظ„ط¨ط§طھ...</p>
+          </div>
+        </div>
+
+        <div class="tab-content" id="products-tab">
+          <div
+            class="products-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h3>ط¥ط¯ط§ط±ط© ط§ظ„ظ…ظ†طھط¬ط§طھ</h3>
+            <button
+              class="btn btn-accept"
+              id="add-product-btn"
+              style="width: auto"
+            >
+              ط¥ط¶ط§ظپط© ظ…ظ†طھط¬ ط¬ط¯ظٹط¯
+            </button>
+          </div>
+
+          <div
+            class="add-product-form"
+            id="add-product-form"
+            style="
+              display: none;
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظ…ظ†طھط¬ ط§ظ„ط¬ط¯ظٹط¯
+            </h4>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+            >
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ط³ظ… ط§ظ„ظ…ظ†طھط¬</label
+                >
+                <input
+                  type="text"
+                  id="new-product-name"
+                  placeholder="ط§ط³ظ… ط§ظ„ظ…ظ†طھط¬..."
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ظ„ط³ط¹ط± (ط¯.ط¹)</label
+                >
+                <input
+                  type="number"
+                  id="new-product-price"
+                  placeholder="ظ…ط«ط§ظ„: 25000"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ظ„ظپط¦ط©</label
+                >
+                <select
+                  id="new-product-category"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                >
+                  <option value="fashion">ط£ط²ظٹط§ط،</option>
+                  <option value="electronics">ط¥ظ„ظƒطھط±ظˆظ†ظٹط§طھ</option>
+                  <option value="home">ظ…ظ†ط²ظ„ظٹط©</option>
+                  <option value="beauty">ط¬ظ…ط§ظ„</option>
+                  <option value="books">ظƒطھط¨</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >طµظˆط±ط© ط§ظ„ظ…ظ†طھط¬</label
+                >
+                <input
+                  type="file"
+                  id="new-product-image"
+                  accept="image/*"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                />
+              </div>
+            </div>
+            <button
+              class="btn btn-accept"
+              id="save-product-btn"
+              style="margin-top: 1.5rem; width: 100%"
+            >
+              ط­ظپط¸ ط§ظ„ظ…ظ†طھط¬
+            </button>
+          </div>
+
+          <div class="orders-grid" id="admin-products-container">
+            </div>
+
+          <div
+            class="add-product-form"
+            id="edit-product-form"
+            style="
+              display: none;
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-top: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              طھط¹ط¯ظٹظ„ ط§ظ„ظ…ظ†طھط¬
+            </h4>
+            <input type="hidden" id="edit-product-id" />
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+            >
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ط³ظ… ط§ظ„ظ…ظ†طھط¬</label
+                >
+                <input
+                  type="text"
+                  id="edit-product-name"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ظ„ط³ط¹ط± (ط¯.ط¹)</label
+                >
+                <input
+                  type="number"
+                  id="edit-product-price"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ظ„ظپط¦ط©</label
+                >
+                <select
+                  id="edit-product-category"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                >
+                  <option value="fashion">ط£ط²ظٹط§ط،</option>
+                  <option value="electronics">ط¥ظ„ظƒطھط±ظˆظ†ظٹط§طھ</option>
+                  <option value="home">ظ…ظ†ط²ظ„ظٹط©</option>
+                  <option value="beauty">ط¬ظ…ط§ظ„</option>
+                  <option value="books">ظƒطھط¨</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >طھط؛ظٹظٹط± ط§ظ„طµظˆط±ط© (ط§ط®طھظٹط§ط±ظٹ)</label
+                >
+                <input
+                  type="file"
+                  id="edit-product-image"
+                  accept="image/*"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                />
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem">
+              <button
+                class="btn btn-accept"
+                id="update-product-btn"
+                style="flex: 1"
+              >
+                ط­ظپط¸ ط§ظ„طھط¹ط¯ظٹظ„ط§طھ
+              </button>
+              <button
+                class="btn btn-reject"
+                id="cancel-edit-btn"
+                style="flex: 1"
+              >
+                ط¥ظ„ط؛ط§ط،
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="categories-tab">
+          <div
+            class="categories-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h3>ط¥ط¯ط§ط±ط© ط§ظ„ظپط¦ط§طھ</h3>
+            <button
+              class="btn btn-accept"
+              id="add-category-btn"
+              style="width: auto"
+            >
+              ط¥ط¶ط§ظپط© ظپط¦ط© ط¬ط¯ظٹط¯ط©
+            </button>
+          </div>
+
+          <div
+            class="add-category-form"
+            id="add-category-form"
+            style="
+              display: none;
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظپط¦ط© ط§ظ„ط¬ط¯ظٹط¯ط©
+            </h4>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem">
+              <input type="hidden" id="new-category-id" />
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ط³ظ… ط§ظ„ظپط¦ط© (ط¹ط±ط¨ظٹ)</label
+                >
+                <input
+                  type="text"
+                  id="new-category-name"
+                  placeholder="ط§ط³ظ… ط§ظ„ظپط¦ط©..."
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">نوع الفئة</label>
+                <select id="new-category-kind" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; background: white">
+                  <option value="main">فئة رئيسية دائرية</option>
+                  <option value="sub">فئة فرعية داخل فئة رئيسية</option>
+                </select>
+              </div>
+              <div class="input-group" id="new-parent-category-wrap" style="display: none">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">تابعة إلى</label>
+                <select id="new-category-parent" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; background: white"></select>
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >طµظˆط±ط© ط§ظ„ظپط¦ط© (ط£ظٹظ‚ظˆظ†ط©)</label
+                >
+                <input
+                  type="file"
+                  id="new-category-image"
+                  accept="image/*"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                />
+              </div>
+            </div>
+            <button
+              class="btn btn-accept"
+              id="save-category-btn"
+              style="margin-top: 1.5rem; width: 100%"
+            >
+              ط­ظپط¸ ط§ظ„ظپط¦ط©
+            </button>
+          </div>
+
+          <div class="orders-grid" id="admin-categories-container">
+            </div>
+
+          <div
+            class="add-category-form"
+            id="edit-category-form"
+            style="
+              display: none;
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-top: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              طھط¹ط¯ظٹظ„ ط§ظ„ظپط¦ط©
+            </h4>
+            <input type="hidden" id="edit-category-original-id" />
+            <input type="hidden" id="edit-category-id" />
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem">
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ط§ط³ظ… ط§ظ„ظپط¦ط© (ط¹ط±ط¨ظٹ)</label
+                >
+                <input
+                  type="text"
+                  id="edit-category-name"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <div class="input-group">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">نوع الفئة</label>
+                <select id="edit-category-kind" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; background: white">
+                  <option value="main">فئة رئيسية دائرية</option>
+                  <option value="sub">فئة فرعية داخل فئة رئيسية</option>
+                </select>
+              </div>
+              <div class="input-group" id="edit-parent-category-wrap" style="display: none">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">تابعة إلى</label>
+                <select id="edit-category-parent" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; background: white"></select>
+              </div>
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >طھط؛ظٹظٹط± طµظˆط±ط© ط§ظ„ظپط¦ط© (ط§ط®طھظٹط§ط±ظٹ)</label
+                >
+                <input
+                  type="file"
+                  id="edit-category-image"
+                  accept="image/*"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                />
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem">
+              <button
+                class="btn btn-accept"
+                id="update-category-btn"
+                style="flex: 1"
+              >
+                ط­ظپط¸ ط§ظ„طھط¹ط¯ظٹظ„ط§طھ
+              </button>
+              <button
+                class="btn btn-reject"
+                id="cancel-category-edit-btn"
+                style="flex: 1"
+              >
+                ط¥ظ„ط؛ط§ط،
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="banners-tab">
+          <div
+            class="banners-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <h3>ط¥ط¯ط§ط±ط© ط§ظ„ط¨ظ†ط±ط§طھ</h3>
+            <button
+              class="btn btn-accept"
+              id="add-banner-btn"
+              style="width: auto"
+            >
+              ط¥ط¶ط§ظپط© ط¨ظ†ط± ط¬ط¯ظٹط¯
+            </button>
+          </div>
+
+          <div
+            class="add-banner-form"
+            id="add-banner-form"
+            style="
+              display: none;
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              طµظˆط±ط© ط§ظ„ط¨ظ†ط± ط§ظ„ط¬ط¯ظٹط¯
+            </h4>
+            <p
+              style="
+                color: var(--text-muted);
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
+              "
+            >
+              ظٹظپط¶ظ„ ط£ظ† طھظƒظˆظ† ط§ظ„طµظˆط±ط© ط¨ط¹ط±ط¶ ظ…ظ†ط§ط³ط¨ ظ„ظ„ظ…طھط¬ط± (ط£ظپظ‚ظٹط©).
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem">
+              <div class="input-group">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >طµظˆط±ط© ط§ظ„ط¨ظ†ط±</label
+                >
+                <input
+                  type="file"
+                  id="new-banner-image"
+                  accept="image/*"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                    background: white;
+                  "
+                />
+              </div>
+            </div>
+            <button
+              class="btn btn-accept"
+              id="save-banner-btn"
+              style="margin-top: 1.5rem; width: 100%"
+            >
+              ط­ظپط¸ ط§ظ„ط¨ظ†ط±
+            </button>
+          </div>
+
+          <div
+            class="banners-grid"
+            id="admin-banners-container"
+            style="display: grid; gap: 1.5rem; grid-template-columns: 1fr"
+          >
+            </div>
+        </div>
+
+        <div class="tab-content" id="settings-tab">
+          <h3>ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ</h3>
+          <div
+            class="delivery-cost-settings"
+            style="
+              background: #fff;
+              padding: 1.5rem;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+              border: 1px solid var(--border);
+            "
+          >
+            <h4 style="margin-bottom: 1rem; color: var(--primary)">
+              ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھظˆطµظٹظ„
+            </h4>
+            <div style="display: flex; gap: 1rem; align-items: flex-end">
+              <div class="input-group" style="flex: 1">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                  "
+                  >ظƒظ„ظپط© ط§ظ„طھظˆطµظٹظ„ (ط¯.ط¹)</label
+                >
+                <input
+                  type="number"
+                  id="delivery-cost-input"
+                  placeholder="ظ…ط«ط§ظ„: 5000"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    font-family: inherit;
+                  "
+                />
+              </div>
+              <button
+                class="btn btn-accept"
+                id="save-delivery-cost-btn"
+                style="width: auto; height: 100%"
+              >
+                ط­ظپط¸ ظƒظ„ظپط© ط§ظ„طھظˆطµظٹظ„
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="firebase-init.js"></script>
+    <script src="admin-arabic-fix.js?v=1"></script>
+    <script src="admin-clear-data.js?v=2"></script>
+    <script src="script.js?v=13"></script>
+  </body>
+</html>
+
